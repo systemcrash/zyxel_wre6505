@@ -1,0 +1,244 @@
+U-Boot 1.1.3 (Apr 13 2015 - 19:08:43)
+
+Board: Ralink APSoC DRAM:  64 MB
+relocate_code Pointer at: 83fb4000
+enable ephy clock...done. rf reg 29 = 5
+SSC disabled.
+******************************
+Software System Reset Occurred
+******************************
+spi_wait_nsec: 29 
+spi device id: c2 20 17 c2 20 (2017c220)
+find flash: MX25L6405D
+raspi_read: from:30000 len:1000 
+raspi_read: from:30000 len:1000 
+============================================ 
+Ralink UBoot Version: 4.1.2.0
+-------------------------------------------- 
+ASIC 7620_MP (Port5<->None)
+DRAM component: 512 Mbits DDR, width 16
+DRAM bus: 16 bit
+Total memory: 64 MBytes
+Flash component: SPI Flash
+Date:Apr 13 2015  Time:19:08:43
+============================================ 
+icache: sets:512, ways:4, linesz:32 ,total:65536
+dcache: sets:256, ways:4, linesz:32 ,total:32768 
+
+ ##### The CPU freq = 580 MHZ #### 
+ estimate memory size =64 Mbytes
+
+Please choose the operation: 
+   1: Load system code to SDRAM via TFTP. 
+   2: Load system code then write to Flash via TFTP. 
+   3: Boot system code via Flash (default).
+   4: Entr boot command line interface.
+   7: Load Boot Loader code then write to Flash via Serial. 
+   9: Load Boot Loader code then write to Flash via TFTP. 
+
+
+You choosed 1
+
+ 0 
+raspi_read: from:40028 len:6 
+
+   
+1: System Load Linux to SDRAM via TFTP. 
+ Please Input new ones /or Ctrl-C to discard
+	Input device IP (192.168.1.6) ==:192.168.1.6
+
+	Input server IP (192.168.1.5) ==:192.168.1.5
+
+	Input Linux Kernel filename (openwrt-ramips-mt7620-zyxel_wre6505-initramfs-kernel.bin) ==:openwrt-ramips-mt7620-zyxel_wre6505-initramfs-kernel.bin
+
+
+ netboot_common, argc= 3 
+
+ NetTxPacket = 0x83FE4CC0 
+
+ KSEG1ADDR(NetTxPacket) = 0xA3FE4CC0 
+
+ NetLoop,call eth_halt ! 
+
+ NetLoop,call eth_init ! 
+Trying Eth0 (10/100-M)
+
+ Waitting for RX_DMA_BUSY status Start... done
+
+
+ ETH_STATE_ACTIVE!! 
+TFTP from server 192.168.1.5; our IP address is 192.168.1.6
+Filename 'openwrt-ramips-mt7620-zyxel_wre6505-initramfs-kernel.bin'.
+
+ TIMEOUT_COUNT=10,Load address: 0x80a00000
+Loading: *T Got ARP REPLY, set server/gtwy eth addr (00:0e:c6:8e:87:bd)
+Got it
+#################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 ##############################################################
+done
+Bytes transferred = 3641168 (378f50 hex)
+NetBootFileXferSize= 00378f50
+Automatic boot of image at addr 0x80A00000 ...
+## Booting image at 80a00000 ...
+   Image Name:   MIPS OpenWrt Linux-4.14.132
+   Image Type:   MIPS Linux Kernel Image (lzma compressed)
+   Data Size:    3641104 Bytes =  3.5 MB
+   Load Address: 80000000
+   Entry Point:  80000000
+   Verifying Checksum ... OK
+   Uncompressing Kernel Image ... OK
+No initrd
+## Transferring control to Linux (at address 80000000) ...
+## Giving linux memsize in MB, 64
+
+Starting kernel ...
+
+[    0.000000] Linux version 4.14.132 (root@086644cdc31f) (gcc version 7.4.0 (OpenWrt GCC 7.4.0 r10602-679a01f)) #0 Thu Jul 25 14:17:51 2019
+[    0.000000] Board has DDR2
+[    0.000000] Analog PMU set to hw control
+[    0.000000] Digital PMU set to hw control
+[    0.000000] SoC Type: MediaTek MT7620A ver:2 eco:6
+[    0.000000] bootconsole [early0] enabled
+[    0.000000] CPU0 revision is: 00019650 (MIPS 24KEc)
+[    0.000000] MIPS: machine is ZyXEL WRE6505
+[    0.000000] Determined physical RAM map:
+[    0.000000]  memory: 04000000 @ 00000000 (usable)
+[    0.000000] Initrd not found or empty - disabling initrd
+[    0.000000] Primary instruction cache 64kB, VIPT, 4-way, linesize 32 bytes.
+[    0.000000] Primary data cache 32kB, 4-way, PIPT, no aliases, linesize 32 bytes
+[    0.000000] Zone ranges:
+[    0.000000]   Normal   [mem 0x0000000000000000-0x0000000003ffffff]
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000000000000-0x0000000003ffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000000000000-0x0000000003ffffff]
+[    0.000000] random: get_random_bytes called from start_kernel+0x98/0x4a0 with crng_init=0
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 16240
+[    0.000000] Kernel command line: console=ttyS1,57600n8  root=/dev/ram0 rootfstype=ramfs rootfstype=squashfs,jffs2
+[    0.000000] PID hash table entries: 256 (order: -2, 1024 bytes)
+[    0.000000] Dentry cache hash table entries: 8192 (order: 3, 32768 bytes)
+[    0.000000] Inode-cache hash table entries: 4096 (order: 2, 16384 bytes)
+[    0.000000] Writing ErrCtl register=00034130
+[    0.000000] Readback ErrCtl register=00034130
+[    0.000000] Memory: 56436K/65536K available (3913K kernel code, 187K rwdata, 892K rodata, 3128K init, 213K bss, 9100K reserved, 0K cma-reserved)
+[    0.000000] SLUB: HWalign=32, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[    0.000000] NR_IRQS: 256
+[    0.000000] CPU Clock: 580MHz
+[    0.000000] clocksource: systick: mask: 0xffff max_cycles: 0xffff, max_idle_ns: 583261500 ns
+[    0.000000] systick: enable autosleep mode
+[    0.000000] systick: running - mult: 214748, shift: 32
+[    0.000000] clocksource: MIPS: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 6590553264 ns
+[    0.000011] sched_clock: 32 bits at 290MHz, resolution 3ns, wraps every 7405115902ns
+[    0.015471] Calibrating delay loop... 385.84 BogoMIPS (lpj=1929216)
+[    0.087725] pid_max: default: 32768 minimum: 301
+[    0.097173] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.110192] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.131345] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+[    0.150828] futex hash table entries: 256 (order: -1, 3072 bytes)
+[    0.163054] pinctrl core: initialized pinctrl subsystem
+[    0.173894] NET: Registered protocol family 16
+[    0.444027] PCI host bridge /pcie@10140000 ranges:
+[    0.453427]  MEM 0x0000000020000000..0x000000002fffffff
+[    0.463797]   IO 0x0000000010160000..0x000000001016ffff
+[    0.493266] rt2880_gpio 10000600.gpio: registering 24 gpios
+[    0.504306] rt2880_gpio 10000600.gpio: registering 24 irq handlers
+[    0.517355] PCI host bridge to bus 0000:00
+[    0.525353] pci_bus 0000:00: root bus resource [mem 0x20000000-0x2fffffff]
+[    0.539073] pci_bus 0000:00: root bus resource [io  0xffffffff]
+[    0.550798] pci_bus 0000:00: root bus resource [??? 0x00000000 flags 0x0]
+[    0.564299] pci_bus 0000:00: No busn resource found for root bus, will use [bus 00-ff]
+[    0.581649] pci 0000:00:00.0: BAR 0: no space for [mem size 0x80000000]
+[    0.594711] pci 0000:00:00.0: BAR 0: failed to assign [mem size 0x80000000]
+[    0.608514] pci 0000:00:00.0: BAR 8: assigned [mem 0x20000000-0x201fffff]
+[    0.622015] pci 0000:00:00.0: BAR 1: assigned [mem 0x20200000-0x2020ffff]
+[    0.635522] pci 0000:01:00.0: BAR 0: assigned [mem 0x20000000-0x200fffff]
+[    0.649021] pci 0000:01:00.1: BAR 0: assigned [mem 0x20100000-0x201fffff]
+[    0.662517] pci 0000:00:00.0: PCI bridge to [bus 01]
+[    0.672367] pci 0000:00:00.0:   bridge window [mem 0x20000000-0x201fffff]
+[    0.690275] clocksource: Switched to clocksource systick
+[    0.702041] NET: Registered protocol family 2
+[    0.711491] TCP established hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.725270] TCP bind hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.737854] TCP: Hash tables configured (established 1024 bind 1024)
+[    0.750635] UDP hash table entries: 256 (order: 0, 4096 bytes)
+[    0.762159] UDP-Lite hash table entries: 256 (order: 0, 4096 bytes)
+[    0.774916] NET: Registered protocol family 1
+[    2.700310] random: fast init done
+[    4.300866] rt-timer 10000100.timer: maximum frequency is 1220Hz
+[    4.313664] Crashlog allocated RAM at address 0x3f00000
+[    4.325970] workingset: timestamp_bits=14 max_order=14 bucket_order=0
+[    4.345846] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    4.357350] jffs2: version 2.2 (NAND) (SUMMARY) (LZMA) (RTIME) (CMODE_PRIORITY) (c) 2001-2006 Red Hat, Inc.
+[    4.468604] io scheduler noop registered
+[    4.476314] io scheduler deadline registered (default)
+[    4.487317] Serial: 8250/16550 driver, 2 ports, IRQ sharing disabled
+[    4.501021] 10000c00.uartlite: ttyS0 at MMIO 0x10000c00 (irq = 20, base_baud = 2500000) is a Palmchip BK-3103
+[    4.521208] cacheinfo: Failed to find cpu0 device node
+[    4.531308] cacheinfo: Unable to detect cache hierarchy for CPU 0
+[    4.548502] spi spi0.0: invalide requested speed 1000000 Hz
+[    4.559510] spi-rt2880 10000b00.spi: can't setup spi0.0, status -22
+[    4.571923] spi_master spi0: spi_device register error /palmbus@10000000/spi@b00/m25p80@0
+[    4.588193] spi_master spi0: Failed to create SPI device for /palmbus@10000000/spi@b00/m25p80@0
+[    4.606304] libphy: Fixed MDIO Bus: probed
+[    4.615783] rt2880-pinmux pinctrl: pin io40 already requested by pinctrl; cannot claim for 10100000.ethernet
+[    4.635263] rt2880-pinmux pinctrl: pin-40 (10100000.ethernet) status -22
+[    4.648543] rt2880-pinmux pinctrl: could not request pin 40 (io40) from group ephy  on device rt2880-pinmux
+[    4.667924] mtk_soc_eth 10100000.ethernet: Error applying setting, reverse things back
+[    4.683686] mtk_soc_eth: probe of 10100000.ethernet failed with error -22
+[    4.697558] rt2880_wdt 10000120.watchdog: Initialized
+[    4.708922] NET: Registered protocol family 10
+[    4.726622] Segment Routing with IPv6
+[    4.733924] NET: Registered protocol family 17
+[    4.742684] 8021q: 802.1Q VLAN Support v1.8
+[    4.753157] Warning: unable to open an initial console.
+[    4.780543] Freeing unused kernel memory: 3128K
+[    4.789384] This architecture does not have kernel memory protection.
+[    4.817331] init: Console is alive
+[    4.824378] init: - watchdog -
+[    4.856593] kmodloader: loading kernel modules from /etc/modules-boot.d/*
+[    4.881138] usbcore: registered new interface driver usbfs
+[    4.892039] usbcore: registered new interface driver hub
+[    4.902605] usbcore: registered new device driver usb
+[    4.919554] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    4.934340] ehci-platform: EHCI generic platform driver
+[    4.947573] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+[    4.961316] ohci-platform: OHCI generic platform driver
+[    4.974163] kmodloader: done loading kernel modules from /etc/modules-boot.d/*
+[    4.992771] init: - preinit -
+[    7.339000] procd: - early -
+[    7.344774] procd: - watchdog -
+[    7.554920] procd: - watchdog -
+[    7.561189] procd: failed to set stdio: No such device
+[    7.571407] procd: - ubus -
+[    7.584518] random: ubusd: uninitialized urandom read (4 bytes read)
+[    7.608061] random: ubusd: uninitialized urandom read (4 bytes read)
+[    7.621183] random: ubusd: uninitialized urandom read (4 bytes read)
+[    7.634916] procd: - init -
+[    8.119582] kmodloader: loading kernel modules from /etc/modules.d/*
+[    8.164791] ip6_tables: (C) 2000-2006 Netfilter Core Team
+[    8.202834] Loading modules backported from Linux version v5.2-rc7-0-g6fbc7275c7a9
+[    8.217790] Backport generated by backports.git v5.2-rc7-1-0-g021a6ba1
+[    8.232649] urngd: jent-rng init failed, err: 2
+[    8.245304] ip_tables: (C) 2000-2006 Netfilter Core Team
+[    8.265707] nf_conntrack version 0.5.0 (1024 buckets, 4096 max)
+[    8.342482] xt_time: kernel timezone is -0000
+[    8.414360] PPP generic driver version 2.4.2
+[    8.425773] NET: Registered protocol family 24
+[    8.463575] ieee80211 phy0: rt2x00lib_request_eeprom_file: Info - Loading EEPROM data from 'soc_wmac.eeprom'.
+[    8.484079] rt2800_wmac 10180000.wmac: Direct firmware load for soc_wmac.eeprom failed with error -2
+[    8.502173] rt2800_wmac 10180000.wmac: Falling back to user helper
+[    8.567779] firmware soc_wmac.eeprom: firmware_loading_store: map pages failed
+[    8.582290] ieee80211 phy0: rt2x00lib_request_eeprom_file: Error - Failed to request EEPROM.
+[    8.599022] rt2800_wmac: probe of 10180000.wmac failed with error -11
+[    8.638727] kmodloader: done loading kernel modules from /etc/modules.d/*
+[   60.702078] random: crng init done
+[   60.708687] random: 7 urandom warning(s) missed due to ratelimiting

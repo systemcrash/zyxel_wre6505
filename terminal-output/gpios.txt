@@ -1,0 +1,37 @@
+#./gpiodump 0x1a171d
+
+GPIOMODE = 0x001a171d
+  SUTIF_SHARE_MODE     = 0, disabled       [default]
+  WDT_RST_MODE         = 0, WDT_RST_N      [default]
+  PA_G_GPIO_MODE       = 1, GPIO           [default]
+  ND_SD_GPIO_MODE      = 2, GPIO           [default]
+  PERST_GPIO_MODE      = 2, GPIO           [default]
+  EPHY_LED_GPIO_MODE   = 0, normal         [default]
+  WLED_GPIO_MODE       = 0, normal
+  SPI_REFCLK0_MODE     = 1, GPIO           [default]
+  SPI_GPIO_MODE        = 0, normal         [default]
+  RGMII2_GPIO_MODE     = 1, GPIO           [default]
+  RGMII1_GPIO_MODE     = 1, GPIO           [default]
+  MDIO_GPIO_MODE       = 2, GPIO           [default]
+  UARTL_GPIO_MODE      = 0, normal
+  UARTF_SHARE_MODE     = 7, GPIO           [default]
+  I2C_GPIO_MODE        = 1, GPIO           [default]
+
+
+# ./gpiodump 0x18171d
+GPIOMODE = 0x0018171d
+  SUTIF_SHARE_MODE     = 0, disabled       [default]
+  WDT_RST_MODE         = 0, WDT_RST_N      [default]
+  PA_G_GPIO_MODE       = 1, GPIO           [default]
+  ND_SD_GPIO_MODE      = 2, GPIO           [default]
+  PERST_GPIO_MODE      = 0, PERST_N
+  EPHY_LED_GPIO_MODE   = 0, normal         [default]
+  WLED_GPIO_MODE       = 0, normal
+  SPI_REFCLK0_MODE     = 1, GPIO           [default]
+  SPI_GPIO_MODE        = 0, normal         [default]
+  RGMII2_GPIO_MODE     = 1, GPIO           [default]
+  RGMII1_GPIO_MODE     = 1, GPIO           [default]
+  MDIO_GPIO_MODE       = 2, GPIO           [default]
+  UARTL_GPIO_MODE      = 0, normal
+  UARTF_SHARE_MODE     = 7, GPIO           [default]
+  I2C_GPIO_MODE        = 1, GPIO           [default]

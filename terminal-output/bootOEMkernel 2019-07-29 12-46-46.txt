@@ -1,0 +1,367 @@
+   Verifying Checksum ... OK
+   Uncompressing Kernel Image ... OK
+No initrd
+## Transferring control to Linux (at address 8000c2f0) ...
+## Giving linux memsize in MB, 64
+
+Starting kernel ...
+
+
+LINUX started...
+
+ THIS IS ASIC
+Linux version 2.6.36 (root@fedora23) (gcc version 3.4.2) #58 Mon Sep 11 15:23:05 CST 2017
+
+ The CPU feqenuce set to 580 MHz
+ PCIE: bypass PCIe DLL.
+ PCIE: Elastic buffer control: Addr:0x68 -> 0xB4
+ disable all power about PCIe
+CPU revision is: 00019650 (MIPS 24Kc)
+Determined physical RAM map:
+ memory: 04000000 @ 00000000 (usable)
+Zone PFN ranges:
+  Normal   0x00000000 -> 0x00004000
+Movable zone start PFN for each node
+early_node_map[1] active PFN ranges
+    0: 0x00000000 -> 0x00004000
+Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 16256
+Kernel command line: console=ttyS1,57600n8 root=/dev/mtdblock5 console=ttyS1,57600 root=/dev/mtdblock5 rootfstype=squashfs
+PID hash table entries: 256 (order: -2, 1024 bytes)
+Dentry cache hash table entries: 8192 (order: 3, 32768 bytes)
+Inode-cache hash table entries: 4096 (order: 2, 16384 bytes)
+Primary instruction cache 64kB, VIPT, 4-way, linesize 32 bytes.
+Primary data cache 32kB, 4-way, PIPT, no aliases, linesize 32 bytes
+Writing ErrCtl register=00030116
+Readback ErrCtl register=00030116
+Memory: 61660k/65536k available (2447k kernel code, 3876k reserved, 497k data, 148k init, 0k highmem)
+NR_IRQS:128
+console [ttyS1] enabled
+Calibrating delay loop... 386.04 BogoMIPS (lpj=772096)
+pid_max: default: 4096 minimum: 301
+Mount-cache hash table entries: 512
+Ralink gpio driver initialized
+led=29, on=2, off=2, blinks,=4000, reset=1, time=4000
+Create successful!!!
+NET: Registered protocol family 16
+RALINK_GPIOMODE = 1a171d
+RALINK_GPIOMODE = 18171d
+PPLL_CFG1=0xe64000
+MT7620 PPLL lock
+PPLL_DRV =0x80080504
+start PCIe register access
+RALINK_PCI_PCICFG_ADDR = 1000f0
+
+*************** MT7620 PCIe RC mode *************
+bio: create slab <bio-0> at 0
+vgaarb: loaded
+pci 0000:00:00.0: BAR 8: assigned [mem 0x20000000-0x201fffff]
+pci 0000:00:00.0: BAR 1: assigned [mem 0x20200000-0x2020ffff]
+pci 0000:00:00.0: BAR 1: set to [mem 0x20200000-0x2020ffff] (PCI address [0x20200000-0x2020ffff]
+pci 0000:01:00.0: BAR 0: assigned [mem 0x20000000-0x200fffff]
+pci 0000:01:00.0: BAR 0: set to [mem 0x20000000-0x200fffff] (PCI address [0x20000000-0x200fffff]
+pci 0000:01:00.1: BAR 0: assigned [mem 0x20100000-0x201fffff]
+pci 0000:01:00.1: BAR 0: set to [mem 0x20100000-0x201fffff] (PCI address [0x20100000-0x201fffff]
+pci 0000:00:00.0: PCI bridge to [bus 01-01]
+pci 0000:00:00.0:   bridge window [io  disabled]
+pci 0000:00:00.0:   bridge window [mem 0x20000000-0x201fffff]
+pci 0000:00:00.0:   bridge window [mem pref disabled]
+BAR0 at slot 0 = 0
+bus=0x0, slot = 0x0
+res[0]->start = 0
+res[0]->end = 0
+res[1]->start = 20200000
+res[1]->end = 2020ffff
+res[2]->start = 0
+res[2]->end = 0
+res[3]->start = 0
+res[3]->end = 0
+res[4]->start = 0
+res[4]->end = 0
+res[5]->start = 0
+res[5]->end = 0
+bus=0x1, slot = 0x0
+res[0]->start = 20000000
+res[0]->end = 200fffff
+res[1]->start = 0
+res[1]->end = 0
+res[2]->start = 0
+res[2]->end = 0
+res[3]->start = 0
+res[3]->end = 0
+res[4]->start = 0
+res[4]->end = 0
+res[5]->start = 0
+res[5]->end = 0
+bus=0x1, slot = 0x0
+res[0]->start = 20100000
+res[0]->end = 201fffff
+res[1]->start = 0
+res[1]->end = 0
+res[2]->start = 0
+res[2]->end = 0
+res[3]->start = 0
+res[3]->end = 0
+res[4]->start = 0
+res[4]->end = 0
+res[5]->start = 0
+res[5]->end = 0
+cfg80211: Calling CRDA to update world regulatory domain
+Switching to clocksource MIPS
+NET: Registered protocol family 2
+IP route cache hash table entries: 1024 (order: 0, 4096 bytes)
+TCP established hash table entries: 2048 (order: 2, 16384 bytes)
+TCP bind hash table entries: 2048 (order: 1, 8192 bytes)
+TCP: Hash tables configured (established 2048 bind 2048)
+TCP reno registered
+NET: Registered protocol family 1
+Load Ralink Timer0 Module
+Load Ralink Timer1 Module
+squashfs: version 4.0 (2009/01/31) Phillip Lougher
+fuse init (API version 7.15)
+msgmni has been set to 120
+Block layer SCSI generic (bsg) driver version 0.4 loaded (major 254)
+io scheduler noop registered (default)
+Serial: 8250/16550 driver, 2 ports, IRQ sharing disabled
+serial8250: ttyS0 at MMIO 0x10000500 (irq = 37) is a 16550A
+serial8250: ttyS1 at MMIO 0x10000c00 (irq = 12) is a 16550A
+brd: module loaded
+deice id : c2 20 17 c2 20 (2017c220)
+MX25L6405D(c2 2017c220) (8192 Kbytes)
+mtd .name = raspi, .size = 0x00800000 (0M) .erasesize = 0x00000008 (0K) .numeraseregions = 65536
+Creating 6 MTD partitions on "raspi":
+0x000000000000-0x000000800000 : "ALL"
+0x000000000000-0x000000030000 : "Bootloader"
+0x000000030000-0x000000040000 : "Config"
+0x000000040000-0x000000050000 : "Factory"
+0x000000050000-0x000000170000 : "Kernel"
+0x000000170000-0x000000800000 : "RootFS"
+rdm_major = 253
+SMACCR1 -- : 0x0000588b
+SMACCR0 -- : 0xf39a9d3c
+Ralink APSoC Ethernet Driver Initilization. v3.0  256 rx/tx descriptors allocated, mtu = 1500!
+SMACCR1 -- : 0x0000588b
+SMACCR0 -- : 0xf39a9d3c
+PROC INIT OK!
+PPP generic driver version 2.4.2
+PPP Deflate Compression module registered
+PPP BSD Compression module registered
+NET: Registered protocol family 24
+PPTP driver version 0.8.5
+Netfilter messages via NETLINK v0.30.
+nf_conntrack version 0.5.0 (963 buckets, 3852 max)
+IPVS: Registered protocols ()
+IPVS: Connection hash table configured (size=4096, memory=32Kbytes)
+IPVS: ipvs loaded.
+GRE over IPv4 demultiplexor driver
+gre: can't add protocol
+ip_tables: (C) 2000-2006 Netfilter Core Team, Type=Restricted Cone
+TCP cubic registered
+NET: Registered protocol family 17
+L2TP core driver, V2.0
+PPPoL2TP kernel driver, V2.0
+L2TP IP encapsulation support (L2TPv3)
+L2TP netlink interface
+L2TP ethernet pseudowire support (L2TPv3)
+802.1Q VLAN Support v1.8 Ben Greear <greearb@candelatech.com>
+All bugs added by David S. Miller <davem@redhat.com>
+VFS: Mounted root (squashfs filesystem) readonly on device 31:5.
+Freeing unused kernel memory: 148k freed
+
+init started: BusyBox v1.12.1 (2017-03-29 11:17:30 CST)
+
+starting pid 21, tty '': '/etc_ro/rcS'
+Algorithmics/MIPS FPU Emulator v1.5
+devpts: called with bogus options
+mount: mounting none on /proc/bus/usb failed: No such file or directory
+Welcome to
+    _______  _______  ___     __  ____   _  _   ___
+    |  ___  \|   __  ||   |   |__||    \ | || | /  /
+    | |___| ||  |__| ||   |__  __ |     \| || |/  /
+    |   _   /|   _   ||      ||  || |\     ||     \
+    |__| \__\|__| |__||______||__||_| \____||_|\___\
+
+   	             =System Architecture Department=
+
+Start nvram
+modprobe: /etc/modprobe.d: No such file or directorynvmtd_init: 41
+
+Creating 1 MTD partitions on "ALL":
+0x0000007f0000-0x000000800000 : "EDINVRAM"
+Creating 1 MTD partitions on "ALL":
+0x0000007e0000-0x0000007f0000 : "EDIENVRAM"
+modprobe: /etc/modprobe.d: No such file or directory
+edi_nvram_init: 1049
+nvload, 296: crc ok :len=65536;8508b835:8508b835
+Start basic
+Password for 'root' changed
+Password for 'admin' changed
+Fri Dec  1 01:01:00 GMT 2000
+Set: phy[0].reg[0] = 3900
+Set: phy[1].reg[0] = 3900
+Set: phy[2].reg[0] = 3900
+Set: phy[3].reg[0] = 3900
+MTD Type: 3
+MTD total size: 800000 bytes
+MTD erase size: 10000 bytes
+buf[0] = 0x8c
+buf[1] = 0x88
+buf[2] = 0xff
+buf[3] = 0x07
+buf[4] = 0x00
+buf[5] = 0x0b
+buf[6] = 0x00
+buf[7] = 0x00
+buf[8] = 0x00
+buf[9] = 0x0e
+buf[10] = 0x00
+buf[11] = 0x00
+buf[12] = 0x00
+buf[13] = 0x0d
+buf[14] = 0x00
+buf[15] = 0x00
+buf[16] = 0xff
+buf[17] = 0xff
+buf[18] = 0x00
+buf[19] = 0x00
+e2p=0x42==[0x07ff]
+Start cmd_agent
+Start lan
+wifi_24G_configured():line-116-->[0;32;31mretval=0
+
+[mlan haha1 ip route add 192.168.1.2 via 0.0.0.0 dev br0Start wl
+
+==========Enable 2G Wireless==========
+ifconfig: ioctl 0x8913 failed: No such device
+ifconfig: ioctl 0x8913 failed: No such device
+ifconfig: ioctl 0x8913 failed: No such device
+ifconfig: ioctl 0x8913 failed: No such device
+device ra0 is not a slave of br0
+interface ra1 does not exist!
+interface ra2 does not exist!
+interface ra3 does not exist!
+interface apcli0 does not exist!
+device eth2 is not a slave of br1
+device eth2 is already a member of a bridge; can't enslave it to bridge br0.
+Start wl5g
+
+==========Enable 5G Wireless==========
+ifconfig: ioctl 0x8913 failed: No such device
+ifconfig: ioctl 0x8913 failed: No such device
+ifconfig: ioctl 0x8913 failed: No such device
+ifconfig: ioctl 0x8913 failed: No such device
+device rai0 is not a slave of br1
+interface rai1 does not exist!
+interface rai2 does not exist!
+interface rai3 does not exist!
+interface apclii0 does not exist!
+device rai0 is not a slave of br0
+device rai0 is not a slave of br1
+Start wlap
+start_ap_wlan,1088,This is repeater mode, no start wlap !
+Start wlap5g
+start_wlanap_5g,1438,This is repeater mode, no start wl5gap !
+Start sysmode
+Start udhcpd
+Start web
+udhcp server (v0.9.8) started
+Adding password for admin.
+socket: Bad file descriptor
+mini_httpd: started as root without requesting chroot(), warning only
+Start ntp
+Start crontab
+tock.stdtime.gov.tw: Unknown host
+Dec  1 01:01:13 crond[271]: crond (busybox 1.12.1) started, log level 8
+
+
+Start system_probe
+Start netbios
+Start dnrd
+Notice: caching turned off
+Start hjdns
+Start genpin
+Start wl_backup
+start_wl_backup():backup.....
+wlanap2GApCliAuthMode=0
+wlanap2GApCliEncrypType=0
+wlanap2GApCliSsid=
+wlanap2Gchannel=0
+wlanap2GApCliCTBssid=
+wlanap2GApCliDefaultKeyID=1
+wlanap2GApCliKeyType=0
+wlanap2GApCliWPAPSK=
+wlanap2GApCliKey1Str=
+wlanap2GApCliKey2Str=
+wlanap2GApCliKey3Str=
+wlanap2GApCliKey4Str=
+sys_mode_client_bandBackup=2Start wl5g_backup
+start_wl5g_backup():backup.....
+wlanap5GApCliAuthMode=0
+wlanap5GApCliEncrypType=0
+wlanap5GApCliSsid=
+wlanap5Gchannel=0
+wlanap5GApCliCTBssid=
+wlanap5GApCliDefaultKeyID=1
+wlanap5GApCliKeyType=0
+wlanap5GApCliWPAPSK=
+wlanap5GApCliKey1Str=
+wlanap5GApCliKey2Str=
+wlanap5GApCliKey3Str=
+wlanap5GApCliKey4Str=
+sys_mode_client_bandBackup=2Start zy1905
+Restart crontab
+Start doSiteSurvey
+** zy1905 Version : 20150908 **
+@@ get_zy1905_debuglevel(111): zy1905_dbg=1
+
+@@ getFirmwareVersion(2261): 
+
+@@ getHostname(2295): 
+
+** zy1905 lib Version : 20151001 **
+@@ zyNetCtrl_WPS_setWPSConfig(563): 
+
+Dec  1 01:01:15 crond[323]: crond (busybox 1.12.1) started, log level 8
+
+
+Restart wl5g
+ifconfig: ioctl 0x8913 failed: No such device
+ifconfig: ioctl 0x8913 failed: No such device
+ifconfig: ioctl 0x8913 failed: No such device
+device rai0 is not a slave of br1
+interface rai1 does not exist!
+interface rai2 does not exist!
+interface rai3 does not exist!
+
+==========Enable 5G Wireless==========
+ifconfig: ioctl 0x8913 failed: No such device
+ifconfig: ioctl 0x8913 failed: No such device
+ifconfig: ioctl 0x8913 failed: No such device
+device rai0 is not a slave of br1
+interface rai1 does not exist!
+interface rai2 does not exist!
+ioctl error
+interface rai3 does not exist!
+device apclii0 is not a slave of br1
+device rai0 is not a slave of br0
+device rai0 is not a slave of br1
+Restart sysmode
+
+starting pid 407, tty '/dev/ttyS1': '/bin/sh'
+
+
+BusyBox v1.12.1 (2017-03-29 11:17:30 CST) built-in shell (ash)
+Enter 'help' for a list of built-in commands.
+
+# reboot
+EDIMAX DBG: 2G site list not exist,start 2G sitesurvey..
+
+# 
+# ioctl error
+
+The system is going down NOW!
+
+Sending SIGTERM to all processes
+mini_httpd: exiting due to signal 15
+
+Sen
+Requesting system reboot

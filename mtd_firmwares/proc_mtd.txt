@@ -1,0 +1,30 @@
+Creating 1 MTD partitions on "ALL":
+0x0000007f0000-0x000000800000 : "EDINVRAM"
+Creating 1 MTD partitions on "ALL":
+0x0000007e0000-0x0000007f0000 : "EDIENVRAM"
+modprobe: /etc/modprobe.d: No such file or directory
+edi_nvram_init: 1049
+nvload, 296: crc ok :len=65536;c8dd550c:c8dd550c
+
+
+# cat /proc/mtd
+dev:    size   erasesize  name
+mtd0: 00800000 00010000 "ALL"
+mtd1: 00030000 00010000 "Bootloader"
+mtd2: 00010000 00010000 "Config"
+mtd3: 00010000 00010000 "Factory"
+mtd4: 00120000 00010000 "Kernel"
+mtd5: 00690000 00010000 "RootFS"
+mtd6: 00010000 00010000 "EDINVRAM"
+mtd7: 00010000 00010000 "EDIENVRAM"
+
+
+Creating 6 MTD partitions on "raspi":
+0x000000000000-0x000000800000 : "ALL"
+0x000000000000-0x000000030000 : "Bootloader"
+0x000000030000-0x000000040000 : "Config"
+0x000000040000-0x000000050000 : "Factory"
+0x000000050000-0x000000170000 : "Kernel"
+0x000000170000-0x000000800000 : "RootFS"
+
+

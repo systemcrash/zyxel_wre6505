@@ -1,0 +1,258 @@
+/dts-v1/;
+
+#include "mt7620a.dtsi"
+//#include "rt2880.dtsi"
+
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/input/input.h>
+
+/ {
+	compatible = "zyxel,wre6505", "ralink,mt7620a-soc";
+	model = "ZyXEL WRE6505";
+	
+        aliases {
+                led-boot = &led_power_green;
+                led-failsafe = &led_power_green;
+                led-running = &led_power_green;
+                led-upgrade = &led_power_green;
+        };
+
+        chosen { //change as appropriate:
+//              bootargs = "console=ttyS0,57600n8 root=/dev/mtdblock3 rootfstype=squashfs,jffs2";
+                bootargs = "console=ttyS0,57600n8 root=/dev/ram0 rootfstype=ramfs";
+        };
+
+        keys {
+                compatible = "gpio-keys-polled";
+                poll-interval = <20>;
+
+                //confirmed: gpio 63
+                /* switch to 'right' gpio 63 = 1, 
+                    switch to 'left' gpio 63 = 0 */
+                /* i.e. Active when switch is set to "Access Point" */
+                toggle {
+                        label = "toggle";
+                        gpios = <&gpio2 23 GPIO_ACTIVE_LOW>;
+                        linux,code = <BTN_0>;
+                        debounce-interval = <60>;
+                };
+
+        		//confirmed: gpio 25
+                wps {
+                        label = "wps";
+                        gpios = <&gpio1 1 GPIO_ACTIVE_LOW>;
+                        debounce-interval = <60>;
+                        linux,code = <KEY_WPS_BUTTON>;
+                };
+        };
+
+        leds {
+		compatible = "gpio-leds";
+		
+                lan { //gpio 32
+                        label = "wre6505:green:lan";
+                        gpios = <&gpio1 8 GPIO_ACTIVE_LOW>;
+                };
+		
+                led_power_green: power { //gpio 29
+                        label = "wre6505:green:power";
+                        gpios = <&gpio1 5 GPIO_ACTIVE_LOW>;
+                };
+		
+                wlan5g_red { //gpio 24
+                        label = "wre6505:red:wlan5g";
+                        gpios = <&gpio1 0 GPIO_ACTIVE_LOW>;
+                };
+		
+                wlan5g { //gpio 33
+                        label = "wre6505:green:wlan5g";
+                        gpios = <&gpio1 9 GPIO_ACTIVE_LOW>;
+                };
+
+                wlan2g_red {//gpio 60
+                        label = "wre6505:red:wlan2g";
+                        gpios = <&gpio2 20 GPIO_ACTIVE_LOW>;
+                };
+
+                wlan2g { //gpio 28
+                        label = "wre6505:green:wlan2g";
+                        gpios = <&gpio1 4 GPIO_ACTIVE_LOW>;
+                };
+
+                wps { //gpio 27
+                        label = "wre6505:blue:wps";
+                        gpios = <&gpio1 3 GPIO_ACTIVE_LOW>;
+                };
+	};
+
+        pinctrl {
+                state_default: pinctrl0 {
+                /* i2c      inhibits gpio 01-02 */
+                /* spi      inhibits gpio 03-06 */
+                /* uartf    inhibits gpio 07-14 */
+                /* uartl    inhibits gpio 15-16 */
+                /* wdt_rst  inhibits gpio 17    */
+                /* pa_pe    inhibits gpio 18-21 */
+                /* mdio     inhibits gpio 22-23 */
+                /* rgmii1   inhibits gpio 24-35 i.e. gpio 1:0-11 most LEDs */
+                /* rgmii2   inhibits gpio 60-71 i.e. gpio 2:20 - wlan2G RED and 2:23 - toggle */
+                /* if you forget to 'mux' in a group here (i.e. add to 'group' list below) 
+                    needed by a gpio pin, the LEDs on those GPIO pins won't work. */
+                        //uartf_gpio_pins;
+                        gpio {
+        				//other available groups include: "wled", "nd_sd", "ephy", "spi refclk"
+                                ralink,group = "i2c", "uartf", "rgmii1", "rgmii2";
+                                ralink,function = "gpio";
+                        };
+                };
+        };
+};
+
+// uart(lite) means only GPO#15 (not a typo) and GPIO#16 are used up.
+&uartlite {
+        ralink,group = "uartlite";
+        ralink,function = "uartlite";
+};
+
+
+&wmac {
+	ralink,mtd-eeprom = <&factory 0x0>;
+        /*
+[    7.649424] rt2800_wmac 10180000.wmac: loaded eeprom from mtd device "factory"
+[    7.663899] ieee80211 phy0: rt2x00_set_rt: Info - RT chipset 6352, rev 0500 detected
+[    7.679356] ieee80211 phy0: rt2x00_set_rf: Info - RF chipset 7620 detected
+	*/
+};
+
+&spi0 {
+	/*
+	consumes GPIO 3-6 and 37-39
+	*/
+        status = "okay";
+
+        flash@0 {
+                compatible = "jedec,spi-nor";
+                reg = <0>;
+                spi-max-frequency = <10000000>;
+
+                partitions {
+                        compatible = "fixed-partitions";
+                        #address-cells = <1>;
+                        #size-cells = <1>;
+
+                        partition@0 {
+                                label = "u-boot";
+                                reg = <0x0 0x30000>;
+                                read-only;
+                        };
+
+                        partition@30000 {
+                                label = "u-boot-env";
+                                reg = <0x30000 0x10000>;
+                        };
+
+                        factory: partition@40000 {
+                                label = "factory";
+                                reg = <0x40000 0x10000>;
+                                read-only;
+                        };
+
+                        /* if you don't care about NVRAM stuff
+                                 make firmware: reg = <0x50000 0x7b0000>;
+                        */
+                        firmware: partition@50000 {
+                                compatible = "denx,uimage";
+                                label = "firmware";
+                                reg = <0x50000 0x790000>;
+                        };
+
+                        /* original firmware goes something like this:
+                        kernel: partition@50000 {
+                                compatible = "denx,uimage";
+                                label = "kernel";
+                                reg = <0x50000 0x120000>;
+                        };
+
+                        rootfs: partition@170000 {
+                                label = "rootfs";
+                                reg = <0x170000 0x690000>;
+                                read-only;
+                        };
+                        */
+
+                        /* these NVRAM partitions contain config for ZyXEL OEM F/Ware
+                           They contain, e.g.: PIN, SSID, Wifi pass, device serial #
+                           If you really need the extra 128K of storage, reap these out,
+                           and grow the firmware partition above to e.g. 0x7b0000
+                         */
+                        edienvram: partition@7e0000 {
+                                label = "EDIENVRAM";
+                                reg = <0x7e0000 0x10000>;
+                                read-only;
+                        };
+
+                        edinvram: partition@7f0000 {
+                                label = "EDINVRAM";
+                                reg = <0x7f0000 0x10000>;
+                                read-only;
+                        };
+                };
+        };
+};
+
+
+//enables gpio pins 0-23
+&gpio0 {
+        status = "okay";
+};
+
+//enables gpio pins 24-39
+&gpio1 {
+        status = "okay";
+};
+
+//enables gpio pins 40-72
+&gpio2 {
+        status = "okay";
+};
+
+
+//enables gpio pin 73
+&gpio3 {
+        status = "okay";
+};
+
+
+&pcie {
+        status = "okay";
+};
+
+
+&ethernet {
+        mtd-mac-address = <&factory 0x4>;
+        mediatek,portmap = "llllw";
+};
+
+&pcie0 {
+        wifi@0,0 {
+                reg = <0x0000 0 0 0 0>;
+                mediatek,mtd-eeprom = <&factory 0x8000>;
+                ieee80211-freq-limit = <5000000 6000000>;
+                //mtd-mac-address-increment = <(-1)>;
+        };
+};
+
+/* not essential - but useful
+&usbphy {
+	status = "okay";
+};
+*/
+
+&ehci {
+	status = "okay";
+};
+
+&ohci {
+	status = "okay";
+};
+

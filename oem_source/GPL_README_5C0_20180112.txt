@@ -1,0 +1,61 @@
+GPL code compile and install steps:
+0. Introduction
+
+  This file will show you how to build the WRE6505 linux system, please 
+note, the download image will overwrite the original image existed in the flash
+memory of EV board.
+
+1. Package List
+   A. V100AAQB5C0_GPL_20180112.tar.bz2   - WRE6505 Open Source Code and toolchains
+   B. GPL_README_fedora.txt              - This file contains basic information about GPL source code.
+
+2. Prepare the build OS
+    Please make sure you OS is Fedora V23 32-bit and select all of software development tools
+
+3. Install Tools
+   Please install the following tools on Fedora V23 to compile and generate the image file
+   dnf update
+   dnf install gcc-c++
+   dnf install ncurses-devel
+   dnf install flex
+   dnf install zlib-devel
+   dnf install byacc
+   dnf install bison
+   dnf install cmake
+   dnf install sharutils
+   dnf install xz-devel
+   dnf install lzma-devel
+   dnf install rcs
+   dnf install gperf
+   dnf groupinstall "Development tools"
+   dnf install autoconf
+   dnf install libtool
+   dnf install ccache 
+   dnf install automake
+   
+   * downgrade makefile
+   yum --nogpgcheck --releasever=13 downgrade make   
+
+4. Untar package.  NOTE: You must do following things as "root"    
+   tar jxf V100AAQB5C0_GPL_20180112.tar.bz2
+
+5. Install ToolChain 
+	1. cd EW-7336ZPC_GPL/toolchain
+	2. tar zxvf buildroot-gcc342_le.tgz
+	3. cp -Rf buildroot-gcc342.le  /opt/.
+
+6. Install lzma-4.32.7 
+	1. cp -Rf lzma-4.32.7.tar.gz /opt/.
+	2. tar zxvf lzma-4.32.7.tar.gz 
+	3. cd lzma-4.32.7
+	4. ./configure
+	5. make
+	6. make install
+
+7. Building:
+	1. mkdir -p /tftpboot/root
+	2. cd ../source
+	3. make
+	4. cd isorouter
+	5. make
+	6. Image path: source/images/(USER)_uImage

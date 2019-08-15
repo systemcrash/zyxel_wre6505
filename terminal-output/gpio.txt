@@ -1,0 +1,193 @@
+# gpio --help
+Usage: gpio w - writing test (output)
+       gpio r - reading test (input)
+       gpio i (<gpio>) - interrupt test for gpio number
+       gpio l <gpio> <on> <off> <blinks> <rests> <times>
+            - set led on <gpio>(0~24) on/off interval, no. of blinking/resting cycles, times of blinking
+# gpio i 1
+
+
+^C
+# gpio i 1
+
+^C
+#  
+# gpio r
+gpio 72 = 0x0
+gpio 71~40 = 0xffffffe0
+gpio 39~24 = 0xf7b
+gpio 23~00 = 0xc07f86
+# gpio w
+
+
+# ls /sys/class/gpio/gpiochip0
+ls: /sys/class/gpio/gpiochip0: No such file or directory
+# ls /sys/class/gpio/gpiochip1
+ls: /sys/class/gpio/gpiochip1: No such file or directory
+# ls /sys/class/gpio/
+ls: /sys/class/gpio/: No such file or directory
+# ls -l /sys/class
+drwxr-xr-x    2 0        0               0 ppp
+drwxr-xr-x    2 0        0               0 bsg
+drwxr-xr-x    2 0        0               0 mtd
+drwxr-xr-x    2 0        0               0 firmware
+drwxr-xr-x    2 0        0               0 mem
+drwxr-xr-x    2 0        0               0 ieee80211
+drwxr-xr-x    2 0        0               0 net
+drwxr-xr-x    2 0        0               0 misc
+drwxr-xr-x    2 0        0               0 block
+drwxr-xr-x    2 0        0               0 tty
+drwxr-xr-x    2 0        0               0 pci_bus
+drwxr-xr-x    2 0        0               0 bdi
+
+
+ls -l /sys/class/misc
+lrwxrwxrwx    1 0        0               0 network_throughput -> ../../devices/virtual/misc/network_throughput
+lrwxrwxrwx    1 0        0               0 network_latency -> ../../devices/virtual/misc/network_latency
+lrwxrwxrwx    1 0        0               0 cpu_dma_latency -> ../../devices/virtual/misc/cpu_dma_latency
+lrwxrwxrwx    1 0        0               0 fuse -> ../../devices/virtual/misc/fuse
+lrwxrwxrwx    1 0        0               0 vga_arbiter -> ../../devices/virtual/misc/vga_arbiter
+# ls -l /sys
+drwxr-xr-x    2 0        0               0 block
+drwxr-xr-x   17 0        0               0 module
+drwxr-xr-x    3 0        0               0 kernel
+drwxr-xr-x    2 0        0               0 firmware
+drwxr-xr-x   14 0        0               0 class
+drwxr-xr-x    4 0        0               0 bus
+drwxr-xr-x    4 0        0               0 dev
+drwxr-xr-x    6 0        0               0 devices
+drwxr-xr-x    3 0        0               0 fs
+
+
+cat /proc/devices
+Character devices:
+  1 mem
+  2 pty
+  3 ttyp
+  4 ttyS
+  5 /dev/tty
+  5 /dev/console
+  5 /dev/ptmx
+ 10 misc
+ 90 mtd
+108 ppp
+128 ptm
+136 pts
+246 edinvram
+247 edienvram
+251 nvram
+252 gpio
+253 rdm0
+254 bsg
+
+Block devices:
+  1 ramdisk
+259 blkext
+ 31 mtdblock
+
+# ls /dev
+ac0        kmem       mtd3ro     mtdblock0  null       ram0       ttyS1
+acl0       mem        mtd4       mtdblock1  nvram      ram1       ttyp0
+cls0       mtd0       mtd4ro     mtdblock2  pcm0       ram2       ttyp1
+console    mtd0ro     mtd5       mtdblock3  ppp        ram3       urandom
+flash0     mtd1       mtd5ro     mtdblock4  ptmx       random     video0
+gpio       mtd1ro     mtd6       mtdblock5  pts        rdm0       watchdog
+hwnat0     mtd2       mtd6ro     mtdblock6  ptyp0      spiS0      edinvram
+i2cM0      mtd2ro     mtd7       mtdblock7  ptyp1      swnat0     edienvram
+i2s0       mtd3       mtd7ro     mtr0       ram        ttyS0      mtdblock8
+# ls -l /dev/gpio
+crw--w--w-    1 0        0        252,   0 /dev/gpio
+# cat /dev/gpio
+cat: read error: Invalid argument
+
+# gpio [J--help
+Usage: gpio w - writing test (output)
+       gpio r - reading test (input)
+       gpio i (<gpio>) - interrupt test for gpio number
+       gpio l <gpio> <on> <off> <blinks> <rests> <times>
+            - set led on <gpio>(0~24) on/off interval, no. of blinking/resting cycles, times of blinking
+# gpio l 1 on
+Usage: gpio w - writing test (output)
+       gpio r - reading test (input)
+       gpio i (<gpio>) - interrupt test for gpio number
+       gpio l <gpio> <on> <off> <blinks> <rests> <times>
+            - set led on <gpio>(0~24) on/off interval, no. of blinking/resting cycles, times of blinking
+# 
+# gpio l 1 2 2 2 2 2
+# gpio l 0 2 2 2 2 2
+# gpio l 2 2 2 2 2 2
+# gpio r
+gpio 72 = 0x0
+gpio 71~40 = 0xffffffe0
+gpio 39~24 = 0xfff
+gpio 23~00 = 0xf07f86
+# gpio l 0 2 2 2 2 2
+# 
+# gpio l 4 2 2 2 2 2
+# 
+# gpio w
+
+# gpio r
+gpio 72 = 0x0
+gpio 71~40 = 0xffffffe0
+gpio 39~24 = 0xfff
+gpio 23~00 = 0xf07f86
+# gpio
+Usage: gpio w - writing test (output)
+       gpio r - reading test (input)
+       gpio i (<gpio>) - interrupt test for gpio number
+       gpio l <gpio> <on> <off> <blinks> <rests> <times>
+            - set led on <gpio>(0~24) on/off interval, no. of blinking/resting cycles, times of blinking
+
+# gpio
+Usage: gpio w - writing test (output)
+       gpio r - reading test (input)
+       gpio i (<gpio>) - interrupt test for gpio number
+       gpio l <gpio> <on> <off> <blinks> <rests> <times>
+            - set led on <gpio>(0~24) on/off interval, no. of blinking/resting cycles, times of blinking
+# gpio r
+gpio 72 = 0x0
+gpio 71~40 = 0xffffffe0
+gpio 39~24 = 0xfff
+gpio 23~00 = 0xc07f86
+
+# gpio l 20 2 2 2 2 2
+# gpio l 21 2 2 2 2 2
+# gpio l 22 2 2 2 2 2
+# 
+# gpio l 23 2 2 2 2 2
+
+# gpio l 18 2 2 2 2 2
+# 
+# gpio l 19 2 2 2 2 2
+# 
+# gpio l 12 2 2 2 2 2
+# 
+# gpio l 13 2 2 2 2 2
+ 2 2 2
+
+gpio l 15 2 2# 
+# 
+# gpio l 14 2 2 2 2 2
+2
+
+gpio l 16 2 2 2# 
+# gpio l 15 2 2 2 2 2
+io l 17 2 2 2 2# 
+# gpio l 16 2 2 2 2 2
+# 
+# gpio l 17 2 2 2 2 2
+# 
+# gpio i 10
+^C
+# gpio i 9
+^C
+gpio l 5 2 2 2 2 2
+# 
+# gpio l 6 2 2 2 2 2
+# 
+# gpio l 7 2 2 2 2 2
+# 
+# gpio l 8 2 2 2 2 2
+# 
+# gpio l 9 2 2 2 2 2
